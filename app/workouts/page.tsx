@@ -1,5 +1,5 @@
 import WorkoutCard from "../Components/WorkoutCard";
-import { WorkoutData } from "../types/dataypes";
+import { WorkoutData } from "../types/dataTypes";
 
 const pagePromise = async (): Promise<WorkoutData[]> => {
   const res = await fetch("https://api.abcz.workers.dev/api/fitlog");

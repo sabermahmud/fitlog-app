@@ -1,5 +1,5 @@
 import { FaStar, FaClock, FaFire, FaDumbbell } from "react-icons/fa";
-import { WorkoutData } from "../types/dataypes";
+import { WorkoutData } from "../types/dataTypes";
 import Link from "next/link";
 import Image from "next/image";
 
