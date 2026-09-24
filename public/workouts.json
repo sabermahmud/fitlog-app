@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "image": "https://placehold.co/600x400?text=Barbell+Bench+Press",
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Bench-press-1.png",
     "category": ["CHEST", "TRICEPS"],
     "name": "BARBELL BENCH PRESS",
     "equipment": ["Barbell", "Bench"],
@@ -11,7 +11,7 @@
   },
   {
     "id": 2,
-    "image": "https://placehold.co/600x400?text=Dumbbell+Curl",
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Dumbbell-Bicep-Curls.jpg",
     "category": ["ARMS", "BICEPS"],
     "name": "DUMBBELL BICEP CURL",
     "equipment": ["Dumbbells"],
@@ -21,7 +21,7 @@
   },
   {
     "id": 3,
-    "image": "https://placehold.co/600x400?text=Squat",
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Squat.png",
     "category": ["LEGS", "GLUTES"],
     "name": "BARBELL BACK SQUAT",
     "equipment": ["Barbell", "Squat Rack"],
@@ -31,7 +31,7 @@
   },
   {
     "id": 4,
-    "image": "https://placehold.co/600x400?text=Shoulder+Press",
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Dumbbell-shoulder-press-1.png",
     "category": ["SHOULDERS", "ARMS"],
     "name": "DUMBBELL SHOULDER PRESS",
     "equipment": ["Dumbbells", "Bench"],
@@ -41,7 +41,7 @@
   },
   {
     "id": 5,
-    "image": "https://placehold.co/600x400?text=Lat+Pulldown",
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Amer-Lat-Pulldown.jpg",
     "category": ["BACK", "BICEPS"],
     "name": "LAT PULLDOWN",
     "equipment": ["Cable Machine"],
@@ -51,7 +51,7 @@
   },
   {
     "id": 6,
-    "image": "https://placehold.co/600x400?text=Push+Ups",
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Push-up-1.png",
     "category": ["CHEST", "ARMS"],
     "name": "CLASSIC PUSH UPS",
     "equipment": ["No Equipment"],
@@ -61,7 +61,7 @@
   },
   {
     "id": 7,
-    "image": "https://placehold.co/600x400?text=Deadlift",
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Deadlift.JPG",
     "category": ["BACK", "LEGS"],
     "name": "BARBELL DEADLIFT",
     "equipment": ["Barbell", "Weight Plates"],
@@ -71,7 +71,7 @@
   },
   {
     "id": 8,
-    "image": "https://placehold.co/600x400?text=Plank",
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Forearm_Plank_Phalakasana_variant_%28outdoor_class%29.jpg",
     "category": ["CORE", "ABS"],
     "name": "FOREARM PLANK",
     "equipment": ["Exercise Mat"],
@@ -81,7 +81,7 @@
   },
   {
     "id": 9,
-    "image": "https://placehold.co/600x400?text=Lunges",
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Dumbbell_lunges.jpg",
     "category": ["LEGS", "GLUTES"],
     "name": "DUMBBELL LUNGES",
     "equipment": ["Dumbbells"],
@@ -91,7 +91,7 @@
   },
   {
     "id": 10,
-    "image": "https://placehold.co/600x400?text=Mountain+Climbers",
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/USSF_Combat_Forces_Command_CSEL_joins_Guardians_for_PT_%289520445%29.jpg",
     "category": ["CORE", "CARDIO"],
     "name": "MOUNTAIN CLIMBERS",
     "equipment": ["No Equipment"],
