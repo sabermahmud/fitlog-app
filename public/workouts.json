@@ -1,0 +1,102 @@
+[
+  {
+    "id": 1,
+    "image": "https://placehold.co/600x400?text=Barbell+Bench+Press",
+    "category": ["CHEST", "TRICEPS"],
+    "name": "BARBELL BENCH PRESS",
+    "equipment": ["Barbell", "Bench"],
+    "duration": 25,
+    "calories": 180,
+    "rating": 4.8
+  },
+  {
+    "id": 2,
+    "image": "https://placehold.co/600x400?text=Dumbbell+Curl",
+    "category": ["ARMS", "BICEPS"],
+    "name": "DUMBBELL BICEP CURL",
+    "equipment": ["Dumbbells"],
+    "duration": 15,
+    "calories": 110,
+    "rating": 4.7
+  },
+  {
+    "id": 3,
+    "image": "https://placehold.co/600x400?text=Squat",
+    "category": ["LEGS", "GLUTES"],
+    "name": "BARBELL BACK SQUAT",
+    "equipment": ["Barbell", "Squat Rack"],
+    "duration": 30,
+    "calories": 240,
+    "rating": 4.9
+  },
+  {
+    "id": 4,
+    "image": "https://placehold.co/600x400?text=Shoulder+Press",
+    "category": ["SHOULDERS", "ARMS"],
+    "name": "DUMBBELL SHOULDER PRESS",
+    "equipment": ["Dumbbells", "Bench"],
+    "duration": 20,
+    "calories": 140,
+    "rating": 4.6
+  },
+  {
+    "id": 5,
+    "image": "https://placehold.co/600x400?text=Lat+Pulldown",
+    "category": ["BACK", "BICEPS"],
+    "name": "LAT PULLDOWN",
+    "equipment": ["Cable Machine"],
+    "duration": 22,
+    "calories": 160,
+    "rating": 4.8
+  },
+  {
+    "id": 6,
+    "image": "https://placehold.co/600x400?text=Push+Ups",
+    "category": ["CHEST", "ARMS"],
+    "name": "CLASSIC PUSH UPS",
+    "equipment": ["No Equipment"],
+    "duration": 12,
+    "calories": 95,
+    "rating": 4.5
+  },
+  {
+    "id": 7,
+    "image": "https://placehold.co/600x400?text=Deadlift",
+    "category": ["BACK", "LEGS"],
+    "name": "BARBELL DEADLIFT",
+    "equipment": ["Barbell", "Weight Plates"],
+    "duration": 28,
+    "calories": 260,
+    "rating": 4.9
+  },
+  {
+    "id": 8,
+    "image": "https://placehold.co/600x400?text=Plank",
+    "category": ["CORE", "ABS"],
+    "name": "FOREARM PLANK",
+    "equipment": ["Exercise Mat"],
+    "duration": 10,
+    "calories": 70,
+    "rating": 4.6
+  },
+  {
+    "id": 9,
+    "image": "https://placehold.co/600x400?text=Lunges",
+    "category": ["LEGS", "GLUTES"],
+    "name": "DUMBBELL LUNGES",
+    "equipment": ["Dumbbells"],
+    "duration": 18,
+    "calories": 150,
+    "rating": 4.7
+  },
+  {
+    "id": 10,
+    "image": "https://placehold.co/600x400?text=Mountain+Climbers",
+    "category": ["CORE", "CARDIO"],
+    "name": "MOUNTAIN CLIMBERS",
+    "equipment": ["No Equipment"],
+    "duration": 14,
+    "calories": 130,
+    "rating": 4.5
+  }
+]
