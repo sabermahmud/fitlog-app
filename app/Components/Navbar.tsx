@@ -1,7 +1,12 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
+import { useContext } from "react";
+import { PlansContext } from "../Context/PlansContext";
 
 export default function Navbar() {
+
+  const {myPlan} = useContext(PlansContext)
   const links = (
     <>
       <li>
@@ -105,7 +110,7 @@ export default function Navbar() {
           >
             <span className="hidden sm:inline">Plan</span>
             <span className="rounded-full bg-[#C2F800] px-2 py-0.5 text-sm font-bold text-black">
-              0
+              {myPlan.length}
             </span>
           </Link>
 

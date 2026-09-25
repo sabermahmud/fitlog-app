@@ -1,9 +1,19 @@
 "use client"
+import { useContext } from "react";
 import { FaCheck } from "react-icons/fa";
+import { PlansContext } from "../Context/PlansContext";
+import { WorkoutData } from "../types/dataTypes";
 
-export default function StartWorkOutBTN() {
+interface StartWorkOutBTNProps {
+    targetedWorkout:WorkoutData;
+}
+
+
+export default function StartWorkOutBTN({targetedWorkout}:StartWorkOutBTNProps) {
+
+    const {myPlan, setMyPlan} = useContext(PlansContext)
     const handleStart = () => {
-        console.log("start work out btn clicked")
+        setMyPlan([...myPlan, targetedWorkout])
     }
   return (
     <>
