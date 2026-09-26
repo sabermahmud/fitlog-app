@@ -5,6 +5,7 @@ import { FaCalendarCheck, FaPlus } from "react-icons/fa";
 import { PlansContext } from "../Context/PlansContext";
 import { WorkoutData } from "../types/dataTypes";
 import { MdBookmarkAdded } from "react-icons/md";
+import { toast } from "react-toastify";
 
 interface SaveForLaterBTNProps {
   targetedWorkout: WorkoutData;
@@ -24,6 +25,7 @@ export default function SaveForLaterBTN({
     if (isAdded) return;
 
     setSavedPlan([...savedPlan, targetedWorkout]);
+    toast.success(`${targetedWorkout.name} saved successfully`)
   };
 
   return (

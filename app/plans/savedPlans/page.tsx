@@ -11,11 +11,19 @@ import {
   FaFire,
   FaStar,
   FaBookmark,
+  FaTrash,
 } from "react-icons/fa";
 import { PlansContext } from "@/app/Context/PlansContext";
+import { toast } from "react-toastify";
 
 export default function SavedPlansPage() {
-  const { savedPlan } = useContext(PlansContext);
+  const { savedPlan, setSavedPlan } = useContext(PlansContext);
+
+  const handleSavedDataDelete = (id: number, name: string) => {
+    const afterDelete = savedPlan.filter((deleted) => deleted.id !== id);
+    setSavedPlan(afterDelete);
+    toast.error(`${name} deleted successfully.`)
+  };
 
   /* ================= EMPTY STATE ================= */
 
@@ -101,10 +109,10 @@ export default function SavedPlansPage() {
               key={plan.id}
               className="group overflow-hidden rounded-3xl border border-base-300 bg-base-100 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
             >
-              <div className="flex flex-col lg:flex-row">
+              <div className="flex flex-col lg:flex-row items-center p-6">
                 {/* ================= IMAGE ================= */}
 
-                <div className="relative h-60 w-full shrink-0 overflow-hidden lg:h-auto lg:min-h-[330px] lg:w-72">
+                <div className="relative h-60 w-full shrink-0 overflow-hidden lg:h-auto lg:min-h-82.5 lg:w-72">
                   <Image
                     src={plan.image}
                     alt={plan.name}
@@ -242,14 +250,25 @@ export default function SavedPlansPage() {
                       <FaArrowRight className="text-xs" />
                     </Link>
 
-                    <Link
-                      href={`/workouts/${plan.id}`}
+                    <button
+                      
                       className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#C2F800] px-5 py-3 text-sm font-black text-black transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#b5e600] hover:shadow-md"
                     >
                       <FaPlay className="text-xs" />
                       Start Workout
-                    </Link>
+                    </button>
                   </div>
+                </div>
+
+                {/* REMOVE BTN */}
+                <div>
+                  <button
+                    type="button"
+                    onClick={() => handleSavedDataDelete(plan.id, plan.name)}
+                    className="flex h-10 w-10 items-center justify-center rounded-xl text-base-content/40 transition-all duration-200 hover:bg-red-500/10 hover:text-red-500"
+                  >
+                    <FaTrash />
+                  </button>
                 </div>
               </div>
             </article>

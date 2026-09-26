@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useContext } from "react";
@@ -12,13 +11,23 @@ import {
   FaFire,
   FaCheck,
   FaStar,
+  FaTrash,
 } from "react-icons/fa";
 import { PlansContext } from "@/app/Context/PlansContext";
+import { toast } from "react-toastify";
 
 export default function TodaysPlansPage() {
-  const { todayPlan } = useContext(PlansContext);
+  const { todayPlan, setTodayPlan } = useContext(PlansContext);
 
-  /* ================= EMPTY STATE ================= */
+  const handleDelete = (id:number, name:string) => {
+    const deletedData = todayPlan.filter(
+      (deleted) => deleted.id !== id
+    );
+    setTodayPlan(deletedData);
+    toast.error(`${name} deleted  successfully`)
+  };
+
+  /* ================= this condition added for auto type ================= */
 
   if (todayPlan.length === 0) {
     return (
@@ -37,8 +46,8 @@ export default function TodaysPlansPage() {
           </h1>
 
           <p className="mx-auto mt-3 max-w-md text-sm leading-6 text-base-content/60 sm:text-base">
-            You haven&apos;t added any workout to today&apos;s plan yet.
-            Explore the workout library and build your routine.
+            You haven&apos;t added any workout to today&apos;s plan yet. Explore
+            the workout library and build your routine.
           </p>
 
           <Link
@@ -58,7 +67,6 @@ export default function TodaysPlansPage() {
   return (
     <section className="px-4 py-8 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-6xl">
-
         {/* ================= HEADER ================= */}
 
         <header className="mb-8 flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
@@ -72,8 +80,7 @@ export default function TodaysPlansPage() {
             </h1>
 
             <p className="mt-2 max-w-xl text-sm leading-6 text-base-content/60 sm:text-base">
-              Stay consistent, complete your workout, and keep moving
-              forward.
+              Stay consistent, complete your workout, and keep moving forward.
             </p>
           </div>
 
@@ -104,11 +111,10 @@ export default function TodaysPlansPage() {
               key={plan.id}
               className="group overflow-hidden rounded-3xl border border-base-300 bg-base-100 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
             >
-              <div className="flex flex-col lg:flex-row">
-
+              <div className="flex flex-col lg:flex-row items-center p-6">
                 {/* ================= IMAGE ================= */}
 
-                <div className="relative h-60 w-full shrink-0 overflow-hidden lg:h-auto lg:min-h-[330px] lg:w-72">
+                <div className="relative h-60 w-full shrink-0 overflow-hidden lg:h-auto lg:min-h-82.5 lg:w-72">
                   <Image
                     src={plan.image}
                     alt={plan.name}
@@ -147,7 +153,6 @@ export default function TodaysPlansPage() {
                 {/* ================= CONTENT ================= */}
 
                 <div className="flex flex-1 flex-col justify-between p-5 sm:p-6 lg:p-7">
-
                   <div>
                     {/* Muscle Groups */}
 
@@ -177,7 +182,6 @@ export default function TodaysPlansPage() {
                     {/* ================= STATS ================= */}
 
                     <div className="mt-5 grid grid-cols-2 gap-2 sm:grid-cols-4">
-
                       {/* Duration */}
 
                       <div className="rounded-2xl bg-base-200/70 p-3.5 transition-colors hover:bg-base-200">
@@ -211,9 +215,7 @@ export default function TodaysPlansPage() {
                       <div className="rounded-2xl bg-base-200/70 p-3.5 transition-colors hover:bg-base-200">
                         <FaDumbbell className="mb-2 text-[#8eb500]" />
 
-                        <p className="text-sm font-black">
-                          {plan.sets}
-                        </p>
+                        <p className="text-sm font-black">{plan.sets}</p>
 
                         <span className="text-[11px] text-base-content/45">
                           Sets
@@ -225,9 +227,7 @@ export default function TodaysPlansPage() {
                       <div className="rounded-2xl bg-base-200/70 p-3.5 transition-colors hover:bg-base-200">
                         <FaPlay className="mb-2 text-[#8eb500]" />
 
-                        <p className="text-sm font-black">
-                          {plan.reps}
-                        </p>
+                        <p className="text-sm font-black">{plan.reps}</p>
 
                         <span className="text-[11px] text-base-content/45">
                           Reps
@@ -239,7 +239,6 @@ export default function TodaysPlansPage() {
                   {/* ================= ACTIONS ================= */}
 
                   <div className="mt-6 flex flex-col gap-2 sm:flex-row sm:justify-end">
-
                     <Link
                       href={`/workouts/${plan.id}`}
                       className="inline-flex items-center justify-center gap-2 rounded-xl border border-base-300 px-5 py-3 text-sm font-bold transition-all duration-200 hover:border-[#C2F800] hover:bg-base-200"
@@ -257,6 +256,17 @@ export default function TodaysPlansPage() {
                     </button>
                   </div>
                 </div>
+
+                {/* ================= REMOVE BTN ================= */}
+                <div>
+                  <button
+                    type="button"
+                    onClick={() => handleDelete(plan.id, plan.name)}
+                    className="flex h-10 w-10 items-center justify-center rounded-xl text-base-content/40 transition-all duration-200 hover:bg-red-500/10 hover:text-red-500"
+                  >
+                    <FaTrash />
+                  </button>
+                </div>
               </div>
             </article>
           ))}
@@ -265,4 +275,3 @@ export default function TodaysPlansPage() {
     </section>
   );
 }
-

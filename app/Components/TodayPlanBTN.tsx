@@ -4,6 +4,7 @@ import { useContext } from "react";
 import { FaCalendarCheck, FaPlus } from "react-icons/fa";
 import { PlansContext } from "../Context/PlansContext";
 import { WorkoutData } from "../types/dataTypes";
+import { toast } from "react-toastify";
 
 interface TodayPlanBTNProps {
   targetedWorkout: WorkoutData;
@@ -23,6 +24,8 @@ export default function TodayPlanBTN({
     if (isAdded) return;
 
     setTodayPlan( [...todayPlan, targetedWorkout]);
+
+    toast.success(`${targetedWorkout.name} added to Today's plan successfully`)
   };
 
   return (
