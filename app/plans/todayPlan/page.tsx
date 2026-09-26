@@ -1,6 +1,6 @@
 "use client";
 
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -19,12 +19,18 @@ import { toast } from "react-toastify";
 export default function TodaysPlansPage() {
   const { todayPlan, setTodayPlan } = useContext(PlansContext);
 
-  const handleDelete = (id:number, name:string) => {
-    const deletedData = todayPlan.filter(
-      (deleted) => deleted.id !== id
-    );
+  const [marked, setMarked] = useState<number[]>([]);
+
+  const handleDelete = (id: number, name: string) => {
+    const deletedData = todayPlan.filter((deleted) => deleted.id !== id);
     setTodayPlan(deletedData);
-    toast.error(`${name} deleted  successfully`)
+    toast.error(`${name} deleted  successfully`);
+  };
+
+  const handleMark = (id: number) => {
+    setMarked((prev) => (prev.includes(id) ? prev : [...prev, id]));
+
+    toast.success("Workout marked as completed!");
   };
 
   /* ================= this condition added for auto type ================= */
@@ -248,11 +254,17 @@ export default function TodaysPlansPage() {
                     </Link>
 
                     <button
+                      onClick={() => handleMark(plan.id)}
+                      disabled={marked.includes(plan.id)}
                       type="button"
-                      className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#C2F800] px-5 py-3 text-sm font-black text-black transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#b5e600] hover:shadow-md"
+                      className={`inline-flex items-center justify-center gap-2 rounded-xl px-5 py-3 text-sm font-black transition-all duration-300 ${
+                        marked.includes(plan.id)
+                          ? "cursor-not-allowed bg-base-300 text-gray-400"
+                          : "bg-[#C2F800] text-black hover:-translate-y-0.5 hover:bg-[#b5e600] hover:shadow-md"
+                      }`}
                     >
                       <FaCheck className="text-xs" />
-                      Mark as Done
+                      {marked.includes(plan.id) ? "Marked" : "Mark as Done"}
                     </button>
                   </div>
                 </div>

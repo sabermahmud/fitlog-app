@@ -250,13 +250,6 @@ export default function SavedPlansPage() {
                       <FaArrowRight className="text-xs" />
                     </Link>
 
-                    <button
-                      
-                      className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#C2F800] px-5 py-3 text-sm font-black text-black transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#b5e600] hover:shadow-md"
-                    >
-                      <FaPlay className="text-xs" />
-                      Start Workout
-                    </button>
                   </div>
                 </div>
 
