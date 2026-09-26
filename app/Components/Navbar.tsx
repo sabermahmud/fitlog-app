@@ -31,7 +31,7 @@ export default function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-base-300 bg-base-100/95 shadow-sm backdrop-blur">
-      <div className="navbar mx-auto min-h-18 max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="navbar mx-auto min-h-18 container px-4 sm:px-6 lg:px-8">
         
         {/* Mobile Menu + Logo */}
         <div className="navbar-start gap-1">

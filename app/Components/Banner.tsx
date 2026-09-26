@@ -1,55 +1,68 @@
+import Image from "next/image";
 import Link from "next/link";
-import { FaArrowRight, FaDumbbell } from "react-icons/fa";
+import { FaArrowRight, FaBolt } from "react-icons/fa";
 
 export function Banner() {
-    
-    return <>
-     <section className="mb-8">
-          <p className="text-xs font-black uppercase tracking-[0.2em] text-[#8eb500]">
-            FITLOG / DASHBOARD
-          </p>
+  return (
+    <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="group relative mb-8 min-h-[400px] w-full overflow-hidden rounded-3xl bg-black text-white shadow-xl sm:min-h-[440px] lg:min-h-[400px]">
+        {/* Background Glow */}
+        <div className="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-[#C2F800]/10 blur-3xl" />
 
-          <h1 className="mt-2 text-3xl font-black tracking-tight sm:text-4xl">
-            Welcome Back 👋
-          </h1>
+        <div className="absolute -bottom-32 right-1/4 h-72 w-72 rounded-full bg-[#C2F800]/10 blur-3xl" />
 
-          <p className="mt-2 text-sm text-base-content/60 sm:text-base">
-            Keep moving, stay consistent, and make every workout count.
-          </p>
-        </section>
+        {/* Subtle Divider */}
+        <div className="absolute left-1/2 top-0 hidden h-full w-px bg-white/[0.03] lg:block" />
 
-        {/* Hero */}
-        <section className="relative mb-6 overflow-hidden rounded-3xl bg-black p-6 text-white shadow-xl sm:p-8 lg:p-10">
-          <div className="relative z-10 max-w-2xl">
-            <p className="text-xs font-black uppercase tracking-[0.2em] text-[#C2F800]">
-              YOUR FITNESS JOURNEY
-            </p>
+        {/* Banner Image */}
+        <div className="pointer-events-none absolute bottom-0 left-1/2 z-[1] flex -translate-x-1/2 justify-center sm:left-auto sm:right-8 sm:translate-x-0 lg:right-10 lg:top-1/2 lg:bottom-auto lg:-translate-y-1/2">
+          <Image
+            src="/banner.png"
+            alt="Fitlog workout banner"
+            width={280}
+            height={400}
+            priority
+            className="h-auto w-40 object-contain opacity-90 transition-transform duration-700 group-hover:scale-105 sm:w-52 lg:w-64"
+          />
+        </div>
 
-            <h2 className="mt-3 text-3xl font-black tracking-tight sm:text-4xl">
-              Build your routine.
-              <br />
-              <span className="text-[#C2F800]">Stay consistent.</span>
-            </h2>
+        {/* Content */}
+        <div className="relative z-10 w-full px-6 py-8 sm:px-8 sm:py-10 lg:max-w-[60%] lg:px-10 lg:py-12">
+          {/* Label */}
+          <div className="inline-flex items-center gap-2 rounded-full border border-[#C2F800]/20 bg-[#C2F800]/10 px-3 py-1.5">
+            <FaBolt className="text-[10px] text-[#C2F800]" />
 
-            <p className="mt-4 max-w-lg text-sm leading-6 text-white/60">
-              Track your workouts, follow your plan, and keep pushing yourself
-              one session at a time.
-            </p>
-
-            <Link
-              href="/workouts"
-              className="mt-6 inline-flex items-center gap-2 rounded-xl bg-[#C2F800] px-5 py-3 text-sm font-bold text-black transition hover:-translate-y-0.5 hover:bg-[#b5e600] hover:shadow-lg"
-            >
-              Explore Workouts
-              <FaArrowRight className="text-xs" />
-            </Link>
+            <span className="text-[10px] font-black uppercase tracking-[0.18em] text-[#C2F800]">
+              Your Fitness Journey
+            </span>
           </div>
 
-          <div className="absolute -right-16 -top-16 h-64 w-64 rounded-full bg-[#C2F800]/10 blur-3xl" />
-          <div className="absolute -bottom-20 right-20 h-56 w-56 rounded-full bg-[#C2F800]/10 blur-3xl" />
+          {/* Heading */}
+          <h2 className="mt-5 text-3xl font-black leading-[1.1] tracking-tight sm:text-4xl lg:text-5xl">
+            Build your routine.
+            <br />
+            <span className="text-[#C2F800]">Stay consistent.</span>
+          </h2>
 
-          <FaDumbbell className="absolute bottom-6 right-8 hidden text-[180px] text-white/5 lg:block" />
-        </section>
-    
-    </>
+          {/* Description */}
+          <p className="mt-4 max-w-lg text-sm leading-6 text-white/55 sm:text-base">
+            Track your workouts, follow your plan, and keep pushing yourself one
+            session at a time.
+          </p>
+
+          {/* CTA */}
+          <Link
+            href="/workouts"
+            className="mt-7 inline-flex items-center gap-2 rounded-xl bg-[#C2F800] px-5 py-3.5 text-sm font-black text-black transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#b5e600] hover:shadow-lg hover:shadow-[#C2F800]/10"
+          >
+            Explore Workouts
+            <FaArrowRight className="text-xs transition-transform duration-300 group-hover:translate-x-1" />
+          </Link>
+        </div>
+
+        {/* Bottom Accent */}
+        <div className="absolute bottom-0 left-0 h-1 w-48 bg-[#C2F800]" />
+      </section>
+    </div>
+  );
 }
