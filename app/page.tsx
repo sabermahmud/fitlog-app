@@ -1,13 +1,11 @@
+import { Banner } from "./Components/Banner";
+import WorkOutsPage from "./workouts/page";
 
+export default function Page() {
+  
+  return (<>
 
-export default function Home() {
-  return (
-    <>
-    <h1>
-      Dashboard
-    </h1>
-    
-    
-    </>
-  );
+  <Banner/>
+  <WorkOutsPage/>
+  </>)
 }

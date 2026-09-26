@@ -14,15 +14,6 @@ export default function Navbar() {
           href="/"
           className="font-medium transition-colors hover:text-[#C2F800]"
         >
-          Dashboard
-        </Link>
-      </li>
-
-      <li>
-        <Link
-          href="/workouts"
-          className="font-medium transition-colors hover:text-[#C2F800]"
-        >
           Workouts
         </Link>
       </li>
@@ -32,7 +23,7 @@ export default function Navbar() {
           href="/plans"
           className="font-medium transition-colors hover:text-[#C2F800]"
         >
-          Plans
+          My Plans
         </Link>
       </li>
     </>
