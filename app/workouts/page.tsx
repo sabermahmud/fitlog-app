@@ -17,7 +17,7 @@ export default async function WorkOutsPage() {
   const pageData = await pagePromise();
 
   return (
-    <main id="library" className="min-h-screen bg-base-200/40 px-4 py-10 sm:px-6 lg:px-8">
+    <main  className="min-h-screen bg-base-200/40 px-4 py-10 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-7xl">
         {/* Header */}
         <section className="mb-10">
@@ -60,7 +60,7 @@ export default async function WorkOutsPage() {
         </section>
 
         {/* Workout Grid */}
-        <section>
+        <section id="library">
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {pageData.map((workout) => (
               <WorkoutCard key={workout.id} workout={workout} />
