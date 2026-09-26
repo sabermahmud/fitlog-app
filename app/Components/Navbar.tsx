@@ -1,18 +1,25 @@
 "use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { useContext } from "react";
+import { usePathname } from "next/navigation";
 import { PlansContext } from "../Context/PlansContext";
 
 export default function Navbar() {
+  const { todayPlan, savedPlan } = useContext(PlansContext);
+  const pathname = usePathname();
 
-  const {todayPlan,savedPlan} = useContext(PlansContext)
   const links = (
     <>
       <li>
         <Link
           href="/"
-          className="font-medium transition-colors hover:text-[#C2F800]"
+          className={`rounded-lg font-medium transition-all duration-200 ${
+            pathname === "/"
+              ? "bg-[#C2F800]/10 text-[#C2F800]"
+              : "hover:bg-[#C2F800]/10 hover:text-[#C2F800]"
+          }`}
         >
           Workouts
         </Link>
@@ -21,9 +28,13 @@ export default function Navbar() {
       <li>
         <Link
           href="/plans"
-          className="font-medium transition-colors hover:text-[#C2F800]"
+          className={`rounded-lg font-medium transition-all duration-200 ${
+            pathname.startsWith("/plans")
+              ? "bg-[#C2F800]/10 text-[#C2F800]"
+              : "hover:bg-[#C2F800]/10 hover:text-[#C2F800]"
+          }`}
         >
-          Plans
+          My Plans
         </Link>
       </li>
     </>
@@ -31,14 +42,14 @@ export default function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-base-300 bg-base-100/95 shadow-sm backdrop-blur">
-      <div className="navbar mx-auto min-h-18 container px-4 sm:px-6 lg:px-8">
-        
+      <div className="navbar container mx-auto min-h-18 px-4 sm:px-6 lg:px-8">
         {/* Mobile Menu + Logo */}
         <div className="navbar-start gap-1">
-          {/* Mobile menu */}
+          {/* Mobile Menu */}
           <div className="dropdown">
             <button
               tabIndex={0}
+              type="button"
               className="btn btn-ghost btn-circle lg:hidden"
               aria-label="Open menu"
             >
@@ -67,10 +78,7 @@ export default function Navbar() {
           </div>
 
           {/* Logo */}
-          <Link
-            href="/"
-            className="group flex items-center gap-2"
-          >
+          <Link href="/" className="group flex items-center gap-2">
             <Image
               src="/logo.png"
               alt="Fitlog logo"
@@ -87,19 +95,22 @@ export default function Navbar() {
 
         {/* Desktop Navigation */}
         <nav className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal gap-2">
-            {links}
-          </ul>
+          <ul className="menu menu-horizontal gap-2">{links}</ul>
         </nav>
 
         {/* Right Actions */}
         <div className="navbar-end gap-2">
-          {/* Plan */}
+          {/* Today's Plan */}
           <Link
             href="/plans"
-            className="btn btn-sm rounded-full border-base-300 px-3 sm:btn-md sm:px-4"
+            className={`btn btn-sm rounded-full px-3 transition-all sm:btn-md sm:px-4 ${
+              pathname.startsWith("/plans")
+                ? "border-[#C2F800] bg-[#C2F800]/10"
+                : "border-base-300"
+            }`}
           >
             <span className="hidden sm:inline">Plan</span>
+
             <span className="rounded-full bg-[#C2F800] px-2 py-0.5 text-sm font-bold text-black">
               {todayPlan.length}
             </span>
@@ -108,10 +119,13 @@ export default function Navbar() {
           {/* Saved */}
           <Link
             href="/plans"
-            className="btn btn-sm rounded-full border-base-300 px-3 sm:btn-md sm:px-4"
+            className="btn btn-sm rounded-full border-base-300 px-3 transition-all sm:btn-md sm:px-4 hover:border-[#C2F800]"
           >
             <span className="hidden sm:inline">Saved</span>
-            <span className="rounded-full border-2 border-[#C2F800] px-2 py-0.5 text-sm font-bold text-[#C2F800]">{savedPlan.length}</span>
+
+            <span className="rounded-full border-2 border-[#C2F800] px-2 py-0.5 text-sm font-bold text-white">
+              {savedPlan.length}
+            </span>
           </Link>
         </div>
       </div>

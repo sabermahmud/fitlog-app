@@ -33,15 +33,15 @@ export function Banner() {
             <FaBolt className="text-[10px] text-[#C2F800]" />
 
             <span className="text-[10px] font-black uppercase tracking-[0.18em] text-[#C2F800]">
-              Your Fitness Journey
+              WORKOUT LIBRARY
             </span>
           </div>
 
           {/* Heading */}
           <h2 className="mt-5 text-3xl font-black leading-[1.1] tracking-tight sm:text-4xl lg:text-5xl">
-            Build your routine.
+            TRAIN WITH INTENT.
             <br />
-            <span className="text-[#C2F800]">Stay consistent.</span>
+            <span className="text-[#C2F800]">LOG EVERY SET.</span>
           </h2>
 
           {/* Description */}
@@ -52,10 +52,10 @@ export function Banner() {
 
           {/* CTA */}
           <Link
-            href="/"
+            href="#library"
             className="mt-7 inline-flex items-center gap-2 rounded-xl bg-[#C2F800] px-5 py-3.5 text-sm font-black text-black transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#b5e600] hover:shadow-lg hover:shadow-[#C2F800]/10"
           >
-            Explore Workouts
+            BROWSE WORKOUTS
             <FaArrowRight className="text-xs transition-transform duration-300 group-hover:translate-x-1" />
           </Link>
         </div>

@@ -17,7 +17,7 @@ export default async function WorkOutsPage() {
   const pageData = await pagePromise();
 
   return (
-    <main className="min-h-screen bg-base-200/40 px-4 py-10 sm:px-6 lg:px-8">
+    <main id="library" className="min-h-screen bg-base-200/40 px-4 py-10 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-7xl">
         {/* Header */}
         <section className="mb-10">
