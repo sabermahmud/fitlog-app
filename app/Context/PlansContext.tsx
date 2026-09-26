@@ -10,14 +10,17 @@ import {
 import { WorkoutData } from "@/app/types/dataTypes";
 
 interface PlansContextType {
-  myPlan: WorkoutData[];
-  setMyPlan: Dispatch<SetStateAction<WorkoutData[]>>;
- 
+  todayPlan: WorkoutData[];
+  setTodayPlan: Dispatch<SetStateAction<WorkoutData[]>>;
+  savedPlan: WorkoutData[];
+  setSavedPlan: Dispatch<SetStateAction<WorkoutData[]>>;
 }
 
 export const PlansContext = createContext<PlansContextType>({
-  myPlan: [],
-  setMyPlan: () => {}
+  todayPlan: [],
+  setTodayPlan: () => {},
+  savedPlan: [],
+  setSavedPlan: () => {},
 });
 
 interface PlansProviderProps {
@@ -25,12 +28,14 @@ interface PlansProviderProps {
 }
 
 export default function PlansProvider({ children }: PlansProviderProps) {
-  const [myPlan, setMyPlan] = useState<WorkoutData[]>([]);
-
+  const [todayPlan, setTodayPlan] = useState<WorkoutData[]>([]);
+  const [savedPlan, setSavedPlan] = useState<WorkoutData[]>([]);
 
   const shareData = {
-    myPlan,
-    setMyPlan
+    todayPlan,
+    setTodayPlan,
+    savedPlan,
+    setSavedPlan,
   };
 
   return (

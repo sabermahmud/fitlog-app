@@ -6,7 +6,7 @@ import { PlansContext } from "../Context/PlansContext";
 
 export default function Navbar() {
 
-  const {myPlan} = useContext(PlansContext)
+  const {todayPlan,savedPlan} = useContext(PlansContext)
   const links = (
     <>
       <li>
@@ -23,7 +23,7 @@ export default function Navbar() {
           href="/plans"
           className="font-medium transition-colors hover:text-[#C2F800]"
         >
-          My Plans
+          Plans
         </Link>
       </li>
     </>
@@ -101,17 +101,17 @@ export default function Navbar() {
           >
             <span className="hidden sm:inline">Plan</span>
             <span className="rounded-full bg-[#C2F800] px-2 py-0.5 text-sm font-bold text-black">
-              {myPlan.length}
+              {todayPlan.length}
             </span>
           </Link>
 
           {/* Saved */}
           <Link
-            href="/saved"
+            href="/plans"
             className="btn btn-sm rounded-full border-base-300 px-3 sm:btn-md sm:px-4"
           >
             <span className="hidden sm:inline">Saved</span>
-            <span className="font-bold">0</span>
+            <span className="rounded-full border-2 border-[#C2F800] px-2 py-0.5 text-sm font-bold text-[#C2F800]">{savedPlan.length}</span>
           </Link>
         </div>
       </div>
