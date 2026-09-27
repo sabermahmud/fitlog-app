@@ -204,7 +204,7 @@ export default function PlansPage() {
               >
                 <FaCalendarCheck className="text-sm" />
 
-                <span>Today's Plan</span>
+                <span>Today&apos;s Plan</span>
 
                 {todayPlan.length > 0 && (
                   <span
