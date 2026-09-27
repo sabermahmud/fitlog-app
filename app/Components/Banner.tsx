@@ -37,10 +37,10 @@ export function Banner() {
           <Image
             src="/banner.png"
             alt="FitLog workout athlete"
-            width={420}
+            width={450}
             height={560}
             priority
-            className="relative h-auto w-[235px] object-contain opacity-95 transition-transform duration-700 group-hover:scale-[1.02]"
+            className="relative h-auto w-63 object-contain opacity-95 transition-transform duration-700 group-hover:scale-[1.02]"
           />
         </div>
 
