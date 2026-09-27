@@ -5,7 +5,7 @@ import { FaArrowRight, FaBolt } from "react-icons/fa";
 export function Banner() {
   return (
     <div className=" mx-auto px-4 sm:px-6 lg:px-8">
-      <section className="group relative mb-8 min-h-100 w-full overflow-hidden rounded-3xl bg-black text-white shadow-xl sm:min-h-110 lg:min-h-100">
+      <section className="group relative mb-8 min-h-130 w-full overflow-hidden rounded-3xl bg-black text-white shadow-xl sm:min-h-110 lg:min-h-100">
         {/* Background Glow */}
         <div className="absolute -right-24 -top-24  w-72 rounded-full bg-[#C2F800]/10 blur-3xl" />
 
@@ -15,7 +15,7 @@ export function Banner() {
         <div className="absolute left-1/2 top-0 hidden  w-px bg-white/3 lg:block" />
 
         {/* Banner Image */}
-        <div className="pointer-events-none absolute bottom-0 left-1/2 flex -translate-x-1/2 justify-center sm:left-auto sm:right-8 sm:translate-x-0 lg:right-10 lg:top-1/2 lg:bottom-auto lg:-translate-y-1/2 mt-4">
+        <div className="pointer-events-none absolute bottom-0 left-1/2 flex -translate-x-1/2 justify-center sm:left-auto sm:right-8 sm:translate-x-0 lg:right-10 lg:top-1/2 lg:bottom-auto lg:-translate-y-1/2 pb-8 ">
           <Image
             src="/banner.png"
             alt="Fitlog workout banner"
