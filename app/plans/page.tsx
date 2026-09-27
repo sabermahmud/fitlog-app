@@ -7,7 +7,6 @@ import {
   FaClock,
   FaFire,
   FaBookmark,
-  FaChevronDown,
 } from "react-icons/fa";
 import { PlansContext } from "../Context/PlansContext";
 import TodaysPlansPage from "./todayPlan/page";
@@ -16,6 +15,7 @@ import { WorkoutData } from "../types/dataTypes";
 
 export default function PlansPage() {
   const [activeTab, setActiveTab] = useState<"today" | "saved">("today");
+
   const [sortBy, setSortBy] = useState<
     "Default" | "Duration" | "Calories" | "Rating"
   >("Default");
@@ -23,16 +23,23 @@ export default function PlansPage() {
   const { todayPlan, savedPlan } = useContext(PlansContext);
 
   const activePlan = activeTab === "today" ? todayPlan : savedPlan;
+
   const isToday = activeTab === "today";
+
+  /* ================= STATS ================= */
+
   const totalExercises = activePlan.length;
+
   const totalTime = activePlan.reduce(
     (total, workout) => total + workout.duration,
     0,
   );
+
   const totalCalories = activePlan.reduce(
     (total, workout) => total + workout.caloriesBurned,
     0,
   );
+
   const stats = [
     {
       label: "Exercises",
@@ -56,26 +63,39 @@ export default function PlansPage() {
       bgClass: "bg-orange-500/10",
     },
   ];
+
+  /* ================= SORT ================= */
+
   const sortPlans = (plans: WorkoutData[]) => {
     const sortedPlans = [...plans];
-    if(sortBy === "Duration"){
-      sortedPlans.sort((a,b) => b.duration - a.duration)
+
+    if (sortBy === "Duration") {
+      sortedPlans.sort((a, b) => b.duration - a.duration);
+    } else if (sortBy === "Calories") {
+      sortedPlans.sort((a, b) => b.caloriesBurned - a.caloriesBurned);
+    } else if (sortBy === "Rating") {
+      sortedPlans.sort((a, b) => b.rating - a.rating);
     }
-    else if (sortBy === "Calories"){
-      sortedPlans.sort((a,b) => b.caloriesBurned - a.caloriesBurned)
-    }
-    else if (sortBy === "Rating"){
-      sortedPlans.sort((a,b) => b.rating - a.rating)
-    }
+
+    return sortedPlans;
   };
 
   const sortedTodayPlans = sortPlans(todayPlan);
   const sortedSavedPlans = sortPlans(savedPlan);
 
+  /* ================= SORT CHANGE ================= */
+
+  const handleSortChange = (value: string) => {
+    setSortBy(
+      value as "Default" | "Duration" | "Calories" | "Rating",
+    );
+  };
+
   return (
     <main className="min-h-screen bg-base-200/50 px-4 py-8 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-7xl">
         {/* ================= HEADER ================= */}
+
         <section className="mb-8">
           <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
             <div>
@@ -99,6 +119,7 @@ export default function PlansPage() {
             </div>
 
             {/* Plan Count */}
+
             <div className="flex w-fit items-center gap-3 rounded-2xl border border-base-300 bg-base-100 px-4 py-3 shadow-sm">
               <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#C2F800]/15">
                 {isToday ? (
@@ -122,6 +143,7 @@ export default function PlansPage() {
         </section>
 
         {/* ================= STATS ================= */}
+
         <section className="mb-8 grid grid-cols-1 gap-4 sm:grid-cols-3">
           {stats.map((stat) => {
             const Icon = stat.icon;
@@ -154,11 +176,14 @@ export default function PlansPage() {
         </section>
 
         {/* ================= TABS + SORT ================= */}
+
         <section className="mb-6 rounded-2xl border border-base-300 bg-base-100 p-2 shadow-sm">
           <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
             {/* Tabs */}
+
             <div className="grid grid-cols-2 gap-1">
               {/* Today's Plan */}
+
               <button
                 type="button"
                 onClick={() => setActiveTab("today")}
@@ -186,6 +211,7 @@ export default function PlansPage() {
               </button>
 
               {/* Saved Plans */}
+
               <button
                 type="button"
                 onClick={() => setActiveTab("saved")}
@@ -214,22 +240,15 @@ export default function PlansPage() {
             </div>
 
             {/* Sort Dropdown */}
+
             <div className="flex items-center gap-3">
               <span className="whitespace-nowrap text-sm font-bold text-base-content/50">
                 Sort by
               </span>
 
               <select
-                defaultValue={sortBy}
-                onChange={(e) =>
-                  setSortBy(
-                    e.target.value as
-                      | "Default"
-                      | "Duration"
-                      | "Calories"
-                      | "Rating",
-                  )
-                }
+                value={sortBy}
+                onChange={(e) => handleSortChange(e.target.value)}
                 className="select h-11 min-h-11 w-40 rounded-xl border-base-300 bg-base-100 text-sm font-bold shadow-sm transition-all duration-200 hover:border-[#C2F800] focus:border-[#C2F800] focus:outline-none focus:ring-2 focus:ring-[#C2F800]/20"
               >
                 <option value="Default">Default</option>
@@ -242,8 +261,13 @@ export default function PlansPage() {
         </section>
 
         {/* ================= ACTIVE CONTENT ================= */}
+
         <section className="overflow-hidden rounded-2xl border border-base-300 bg-base-100 shadow-sm">
-          {isToday ? <TodaysPlansPage /> : <SavedPlansPage />}
+          {isToday ? (
+            <TodaysPlansPage plans={sortedTodayPlans} />
+          ) : (
+            <SavedPlansPage plans={sortedSavedPlans} />
+          )}
         </section>
       </div>
     </main>

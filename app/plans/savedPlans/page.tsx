@@ -15,14 +15,25 @@ import {
 } from "react-icons/fa";
 import { PlansContext } from "@/app/Context/PlansContext";
 import { toast } from "react-toastify";
+import { WorkoutData } from "@/app/types/dataTypes";
 
-export default function SavedPlansPage() {
+interface SavedPlansPageProps {
+  plans: WorkoutData[];
+}
+
+export default function SavedPlansPage({
+  plans,
+}: SavedPlansPageProps) {
   const { savedPlan, setSavedPlan } = useContext(PlansContext);
 
   const handleSavedDataDelete = (id: number, name: string) => {
-    const afterDelete = savedPlan.filter((deleted) => deleted.id !== id);
+    const afterDelete = savedPlan.filter(
+      (deleted) => deleted.id !== id
+    );
+
     setSavedPlan(afterDelete);
-    toast.error(`${name} deleted successfully.`)
+
+    toast.error(`${name} deleted successfully.`);
   };
 
   /* ================= EMPTY STATE ================= */
@@ -44,8 +55,8 @@ export default function SavedPlansPage() {
           </h1>
 
           <p className="mx-auto mt-3 max-w-md text-sm leading-6 text-base-content/60 sm:text-base">
-            Save workouts you want to come back to later and build your personal
-            workout library.
+            Save workouts you want to come back to later and build your
+            personal workout library.
           </p>
 
           <Link
@@ -65,6 +76,7 @@ export default function SavedPlansPage() {
   return (
     <section className="px-4 py-8 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-6xl">
+
         {/* ================= HEADER ================= */}
 
         <header className="mb-8 flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
@@ -78,7 +90,8 @@ export default function SavedPlansPage() {
             </h1>
 
             <p className="mt-2 max-w-xl text-sm leading-6 text-base-content/60 sm:text-base">
-              Your personal collection of workouts ready whenever you need them.
+              Your personal collection of workouts ready whenever you need
+              them.
             </p>
           </div>
 
@@ -95,7 +108,9 @@ export default function SavedPlansPage() {
               </p>
 
               <p className="mt-1 text-xs font-medium text-base-content/50">
-                {savedPlan.length === 1 ? "Saved Workout" : "Saved Workouts"}
+                {savedPlan.length === 1
+                  ? "Saved Workout"
+                  : "Saved Workouts"}
               </p>
             </div>
           </div>
@@ -104,15 +119,16 @@ export default function SavedPlansPage() {
         {/* ================= SAVED PLAN LIST ================= */}
 
         <div className="space-y-5">
-          {savedPlan.map((plan, index) => (
+          {plans.map((plan, index) => (
             <article
               key={plan.id}
               className="group overflow-hidden rounded-3xl border border-base-300 bg-base-100 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
             >
-              <div className="flex flex-col lg:flex-row items-center p-6">
+              <div className="flex flex-col items-center p-6 lg:flex-row">
+
                 {/* ================= IMAGE ================= */}
 
-                <div className="relative h-60 w-full shrink-0 overflow-hidden lg:h-auto lg:min-h-82.5 lg:w-72">
+                <div className="relative h-60 w-full shrink-0 overflow-hidden rounded-2xl lg:h-auto lg:min-h-82.5 lg:w-72">
                   <Image
                     src={plan.image}
                     alt={plan.name}
@@ -121,11 +137,7 @@ export default function SavedPlansPage() {
                     sizes="(max-width: 1024px) 100vw, 288px"
                   />
 
-                  {/* Overlay */}
-
                   <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/10 to-transparent" />
-
-                  {/* Number */}
 
                   <div className="absolute left-4 top-4 flex h-9 w-9 items-center justify-center rounded-xl bg-black/70 text-xs font-black text-white backdrop-blur-md">
                     {String(index + 1).padStart(2, "0")}
@@ -155,8 +167,9 @@ export default function SavedPlansPage() {
 
                 {/* ================= CONTENT ================= */}
 
-                <div className="flex flex-1 flex-col justify-between p-5 sm:p-6 lg:p-7">
+                <div className="flex min-w-0 flex-1 flex-col justify-between p-5 sm:p-6 lg:p-7">
                   <div>
+
                     {/* Muscle Groups */}
 
                     <div className="flex flex-wrap gap-2">
@@ -185,6 +198,7 @@ export default function SavedPlansPage() {
                     {/* ================= STATS ================= */}
 
                     <div className="mt-5 grid grid-cols-2 gap-2 sm:grid-cols-4">
+
                       {/* Duration */}
 
                       <div className="rounded-2xl bg-base-200/70 p-3.5 transition-colors hover:bg-base-200">
@@ -218,7 +232,9 @@ export default function SavedPlansPage() {
                       <div className="rounded-2xl bg-base-200/70 p-3.5 transition-colors hover:bg-base-200">
                         <FaDumbbell className="mb-2 text-[#8eb500]" />
 
-                        <p className="text-sm font-black">{plan.sets}</p>
+                        <p className="text-sm font-black">
+                          {plan.sets}
+                        </p>
 
                         <span className="text-[11px] text-base-content/45">
                           Sets
@@ -230,7 +246,9 @@ export default function SavedPlansPage() {
                       <div className="rounded-2xl bg-base-200/70 p-3.5 transition-colors hover:bg-base-200">
                         <FaPlay className="mb-2 text-[#8eb500]" />
 
-                        <p className="text-sm font-black">{plan.reps}</p>
+                        <p className="text-sm font-black">
+                          {plan.reps}
+                        </p>
 
                         <span className="text-[11px] text-base-content/45">
                           Reps
@@ -249,20 +267,21 @@ export default function SavedPlansPage() {
                       View Details
                       <FaArrowRight className="text-xs" />
                     </Link>
-
                   </div>
                 </div>
 
-                {/* REMOVE BTN */}
-                <div>
-                  <button
-                    type="button"
-                    onClick={() => handleSavedDataDelete(plan.id, plan.name)}
-                    className="flex h-10 w-10 items-center justify-center rounded-xl text-base-content/40 transition-all duration-200 hover:bg-red-500/10 hover:text-red-500"
-                  >
-                    <FaTrash />
-                  </button>
-                </div>
+                {/* ================= REMOVE BUTTON ================= */}
+
+                <button
+                  type="button"
+                  aria-label={`Delete ${plan.name}`}
+                  onClick={() =>
+                    handleSavedDataDelete(plan.id, plan.name)
+                  }
+                  className="mt-3 flex h-10 w-10 shrink-0 items-center justify-center self-end rounded-xl text-base-content/40 transition-all duration-200 hover:bg-red-500/10 hover:text-red-500 lg:mt-0 lg:self-start"
+                >
+                  <FaTrash />
+                </button>
               </div>
             </article>
           ))}

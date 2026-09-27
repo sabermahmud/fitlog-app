@@ -15,25 +15,46 @@ import {
 } from "react-icons/fa";
 import { PlansContext } from "@/app/Context/PlansContext";
 import { toast } from "react-toastify";
+import { WorkoutData } from "@/app/types/dataTypes";
 
-export default function TodaysPlansPage() {
+interface TodaysPlansPageProps {
+  plans: WorkoutData[];
+}
+
+export default function TodaysPlansPage({
+  plans,
+}: TodaysPlansPageProps) {
   const { todayPlan, setTodayPlan } = useContext(PlansContext);
 
   const [marked, setMarked] = useState<number[]>([]);
 
+  /* ================= DELETE ================= */
+
   const handleDelete = (id: number, name: string) => {
-    const deletedData = todayPlan.filter((deleted) => deleted.id !== id);
-    setTodayPlan(deletedData);
-    toast.error(`${name} deleted  successfully`);
+    const updatedPlans = todayPlan.filter((plan) => plan.id !== id);
+
+    setTodayPlan(updatedPlans);
+
+    setMarked((prev) => prev.filter((markedId) => markedId !== id));
+
+    toast.error(`${name} deleted successfully`);
   };
 
+  /* ================= MARK AS DONE ================= */
+
   const handleMark = (id: number) => {
-    setMarked((prev) => (prev.includes(id) ? prev : [...prev, id]));
+    setMarked((prev) => {
+      if (prev.includes(id)) {
+        return prev;
+      }
+
+      return [...prev, id];
+    });
 
     toast.success("Workout marked as completed!");
   };
 
-  /* ================= this condition added for auto type ================= */
+  /* ================= EMPTY STATE ================= */
 
   if (todayPlan.length === 0) {
     return (
@@ -112,15 +133,15 @@ export default function TodaysPlansPage() {
         {/* ================= WORKOUT LIST ================= */}
 
         <div className="space-y-5">
-          {todayPlan.map((plan, index) => (
+          {plans.map((plan, index) => (
             <article
               key={plan.id}
               className="group overflow-hidden rounded-3xl border border-base-300 bg-base-100 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
             >
-              <div className="flex flex-col lg:flex-row items-center p-6">
+              <div className="flex flex-col items-center p-6 lg:flex-row">
                 {/* ================= IMAGE ================= */}
 
-                <div className="relative h-60 w-full shrink-0 overflow-hidden lg:h-auto lg:min-h-82.5 lg:w-72">
+                <div className="relative h-60 w-full shrink-0 overflow-hidden rounded-2xl lg:h-auto lg:min-h-82.5 lg:w-72">
                   <Image
                     src={plan.image}
                     alt={plan.name}
@@ -158,7 +179,7 @@ export default function TodaysPlansPage() {
 
                 {/* ================= CONTENT ================= */}
 
-                <div className="flex flex-1 flex-col justify-between p-5 sm:p-6 lg:p-7">
+                <div className="flex min-w-0 flex-1 flex-col justify-between p-5 sm:p-6 lg:p-7">
                   <div>
                     {/* Muscle Groups */}
 
@@ -221,7 +242,9 @@ export default function TodaysPlansPage() {
                       <div className="rounded-2xl bg-base-200/70 p-3.5 transition-colors hover:bg-base-200">
                         <FaDumbbell className="mb-2 text-[#8eb500]" />
 
-                        <p className="text-sm font-black">{plan.sets}</p>
+                        <p className="text-sm font-black">
+                          {plan.sets}
+                        </p>
 
                         <span className="text-[11px] text-base-content/45">
                           Sets
@@ -233,7 +256,9 @@ export default function TodaysPlansPage() {
                       <div className="rounded-2xl bg-base-200/70 p-3.5 transition-colors hover:bg-base-200">
                         <FaPlay className="mb-2 text-[#8eb500]" />
 
-                        <p className="text-sm font-black">{plan.reps}</p>
+                        <p className="text-sm font-black">
+                          {plan.reps}
+                        </p>
 
                         <span className="text-[11px] text-base-content/45">
                           Reps
@@ -254,9 +279,9 @@ export default function TodaysPlansPage() {
                     </Link>
 
                     <button
+                      type="button"
                       onClick={() => handleMark(plan.id)}
                       disabled={marked.includes(plan.id)}
-                      type="button"
                       className={`inline-flex items-center justify-center gap-2 rounded-xl px-5 py-3 text-sm font-black transition-all duration-300 ${
                         marked.includes(plan.id)
                           ? "cursor-not-allowed bg-base-300 text-gray-400"
@@ -264,21 +289,24 @@ export default function TodaysPlansPage() {
                       }`}
                     >
                       <FaCheck className="text-xs" />
-                      {marked.includes(plan.id) ? "Marked" : "Mark as Done"}
+
+                      {marked.includes(plan.id)
+                        ? "Marked"
+                        : "Mark as Done"}
                     </button>
                   </div>
                 </div>
 
-                {/* ================= REMOVE BTN ================= */}
-                <div>
-                  <button
-                    type="button"
-                    onClick={() => handleDelete(plan.id, plan.name)}
-                    className="flex h-10 w-10 items-center justify-center rounded-xl text-base-content/40 transition-all duration-200 hover:bg-red-500/10 hover:text-red-500"
-                  >
-                    <FaTrash />
-                  </button>
-                </div>
+                {/* ================= REMOVE ================= */}
+
+                <button
+                  type="button"
+                  aria-label={`Delete ${plan.name}`}
+                  onClick={() => handleDelete(plan.id, plan.name)}
+                  className="mt-3 flex h-10 w-10 shrink-0 items-center justify-center self-end rounded-xl text-base-content/40 transition-all duration-200 hover:bg-red-500/10 hover:text-red-500 lg:mt-0 lg:self-start"
+                >
+                  <FaTrash className="text-sm" />
+                </button>
               </div>
             </article>
           ))}
