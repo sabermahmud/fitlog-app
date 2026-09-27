@@ -32,16 +32,7 @@ export default function Footer() {
                   href="/"
                   className="transition-colors hover:text-[#C2F800]"
                 >
-                  Home
-                </Link>
-              </li>
-
-              <li>
-                <Link
-                  href="/workouts"
-                  className="transition-colors hover:text-[#C2F800]"
-                >
-                  Workouts
+                  workouts
                 </Link>
               </li>
 
@@ -54,14 +45,6 @@ export default function Footer() {
                 </Link>
               </li>
 
-              <li>
-                <Link
-                  href="/saved"
-                  className="transition-colors hover:text-[#C2F800]"
-                >
-                  Saved Workouts
-                </Link>
-              </li>
             </ul>
           </div>
 

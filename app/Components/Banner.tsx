@@ -4,8 +4,7 @@ import {
   FaArrowRight,
   FaBolt,
   FaDumbbell,
-  FaFire,
-  FaPlay,
+  FaFire
 } from "react-icons/fa";
 
 export function Banner() {
@@ -45,7 +44,7 @@ export function Banner() {
         </div>
 
         {/* ================= DESKTOP IMAGE ================= */}
-        <div className="pointer-events-none absolute bottom-0 right-2 z-10 hidden items-end justify-center sm:flex lg:right-12">
+        <div className="pointer-events-none absolute bottom-17 right-2 z-10 hidden items-end justify-center sm:flex lg:right-12">
           <div className="absolute bottom-8 h-20 w-48 rounded-full bg-[#C2F800]/10 blur-3xl" />
 
           <Image
@@ -72,10 +71,10 @@ export function Banner() {
           </div>
 
           {/* Heading */}
-          <h2 className="mt-5 max-w-xl text-[2.35rem] font-black leading-[0.94] tracking-[-0.045em] sm:text-5xl lg:text-[4.2rem]">
-            TRAIN WITH
+          <h2 className="mt-5 max-w-2xl text-[2.35rem] font-black leading-[0.94] tracking-[-0.045em] sm:text-5xl lg:text-[4.2rem]">
+            TRAIN WITH INTENT. 
             <br />
-            <span className="text-[#C2F800]">INTENTION.</span>
+            <span className="text-[#C2F800]">LOG EVERY SET.</span>
           </h2>
 
           {/* Description */}
@@ -89,17 +88,10 @@ export function Banner() {
               href="#library"
               className="group/btn inline-flex items-center gap-2.5 rounded-xl bg-[#C2F800] px-4 py-3 text-[10px] font-black tracking-wide text-black transition-all duration-300 hover:-translate-y-1 hover:bg-[#b5e600] hover:shadow-xl hover:shadow-[#C2F800]/10 sm:px-5 sm:py-3.5 sm:text-xs"
             >
-              <FaPlay className="text-[8px]" />
               BROWSE WORKOUTS
               <FaArrowRight className="text-[9px] transition-transform duration-300 group-hover/btn:translate-x-1" />
             </Link>
 
-            <div className="hidden items-center gap-2 rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3.5 backdrop-blur-sm sm:flex">
-              <FaDumbbell className="text-xs text-[#C2F800]" />
-              <span className="text-[10px] font-bold uppercase tracking-wider text-white/50">
-                Train Smarter
-              </span>
-            </div>
           </div>
 
           {/* Mobile Bottom Message */}
