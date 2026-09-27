@@ -35,6 +35,8 @@ export default async function WorkDetailsPage({
 
   const targetedWorkout = pageData.find((target) => target.id === Number(id));
 
+
+  // this condition applied for declare type implicitly
   if (!targetedWorkout) {
     return (
       <main className="flex min-h-screen items-center justify-center bg-base-200/40 px-4">
@@ -69,7 +71,7 @@ export default async function WorkDetailsPage({
       <div className="mx-auto max-w-6xl">
         {/* Back Button */}
         <Link
-          href="/workouts"
+          href="/"
           className="group mb-6 inline-flex items-center gap-2 rounded-lg px-1 py-2 text-sm font-semibold text-base-content/60 transition hover:text-[#C2F800]"
         >
           <FaArrowLeft className="transition-transform group-hover:-translate-x-1" />

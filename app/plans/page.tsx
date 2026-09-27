@@ -7,11 +7,13 @@ import {
   FaClock,
   FaFire,
   FaBookmark,
+  FaArrowLeft,
 } from "react-icons/fa";
 import { PlansContext } from "../Context/PlansContext";
 import TodaysPlansPage from "./todayPlan/page";
 import SavedPlansPage from "./savedPlans/page";
 import { WorkoutData } from "../types/dataTypes";
+import Link from "next/link";
 
 export default function PlansPage() {
   const [activeTab, setActiveTab] = useState<"today" | "saved">("today");
@@ -86,13 +88,20 @@ export default function PlansPage() {
   /* ================= SORT CHANGE ================= */
 
   const handleSortChange = (value: string) => {
-    setSortBy(
-      value as "Default" | "Duration" | "Calories" | "Rating",
-    );
+    setSortBy(value as "Default" | "Duration" | "Calories" | "Rating");
   };
 
   return (
     <main className="min-h-screen bg-base-200/50 px-4 py-8 sm:px-6 lg:px-8">
+      {/* Back Button */}
+      <Link
+        href="/"
+        className="group mb-6 inline-flex items-center gap-2 rounded-lg px-1 py-2 text-sm font-semibold text-base-content/60 transition hover:text-[#C2F800]"
+      >
+        <FaArrowLeft className="transition-transform group-hover:-translate-x-1" />
+        Back to Workouts
+      </Link>
+
       <div className="mx-auto max-w-7xl">
         {/* ================= HEADER ================= */}
 
