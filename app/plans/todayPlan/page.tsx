@@ -78,7 +78,7 @@ export default function TodaysPlansPage({
           </p>
 
           <Link
-            href="/workouts"
+            href="/"
             className="mt-7 inline-flex items-center gap-2 rounded-xl bg-[#C2F800] px-6 py-3.5 text-sm font-black text-black transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#b5e600] hover:shadow-lg"
           >
             Browse Workouts
