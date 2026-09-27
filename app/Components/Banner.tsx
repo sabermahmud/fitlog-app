@@ -30,7 +30,7 @@ export function Banner() {
         <div className="absolute right-[34%] top-0 hidden h-full w-px bg-white/[0.04] lg:block" />
 
         {/* ================= MOBILE IMAGE ================= */}
-        <div className="pointer-events-none absolute bottom-0 left-1/2 z-10 -translate-x-1/2 sm:hidden">
+        <div className="pointer-events-none absolute bottom-26 left-1/2 z-10 -translate-x-1/2 sm:hidden">
           {/* Image Glow */}
           <div className="absolute bottom-8 left-1/2 h-24 w-56 -translate-x-1/2 rounded-full bg-[#C2F800]/10 blur-3xl" />
 
